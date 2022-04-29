@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js",
     "dev": "nodemon index.js",
-    "tailwind:css": "postcss public/styles/tailwind.css -o public/styles/style.css"
+    "tailwind:css": "postcss public/styles/tailwind.css -o public/styles/style.css",
+    "tailwind:dev": "npx tailwindcss -i ./public/styles/tailwind.css -o ./public/styles/style.css --watch"
   },
   "repository": {
     "type": "git",
@@ -27,7 +28,9 @@
     "express-handlebars": "^6.0.5",
     "mongoose": "^6.3.1",
     "postcss": "^8.4.12",
-    "postcss-cli": "^9.1.0",
+    "postcss-cli": "^9.1.0"
+  },
+  "devDependencies": {
     "tailwindcss": "^3.0.24"
   }
 }

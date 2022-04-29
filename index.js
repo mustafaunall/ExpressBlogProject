@@ -4,6 +4,8 @@ const express = require('express')
 const mongoose = require('mongoose')
 const expressHBS = require('express-handlebars')
 
+const userRouter = require('./routes/userRouter')
+
 const app = express()
 
 const hbs = expressHBS.create({
@@ -17,11 +19,8 @@ app.set('views', 'views')
 
 app.use(express.urlencoded({ extended: true }))
 app.use(express.static('public'))
-// app.use -> customRoute
 
-app.get('/', (req, res) => {
-    res.render('main', { layout: 'index' })
-})
+app.use(userRouter)
 
 const start = async () => {
     try {
