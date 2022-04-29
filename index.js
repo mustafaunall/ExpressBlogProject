@@ -19,6 +19,10 @@ app.use(express.urlencoded({ extended: true }))
 app.use(express.static('public'))
 // app.use -> customRoute
 
+app.get('/', (req, res) => {
+    res.render('main', { layout: 'index' })
+})
+
 const start = async () => {
     try {
         await mongoose.connect(MONGO_CONNECTION, {
