@@ -4,7 +4,7 @@ const express = require('express')
 const mongoose = require('mongoose')
 const expressHBS = require('express-handlebars')
 
-const userRouter = require('./routes/userRouter')
+const postRouter = require('./routes/postRouter')
 
 const app = express()
 
@@ -19,8 +19,9 @@ app.set('views', 'views')
 
 app.use(express.urlencoded({ extended: true }))
 app.use(express.static('public'))
+app.use(express.json())
 
-app.use(userRouter)
+app.use(postRouter)
 
 const start = async () => {
     try {

@@ -1,9 +1,11 @@
-{{#if posts}}
-
-{{#each posts}}
-
-<h1>{{ title }}</h1>
-
-{{/each}}
-
+{{#if posts.length}}
+<div>
+    {{#each posts}}
+        <span>
+            <p>{{title}}</p>
+        </span>
+    {{/each}}
+</div>
+{{else}}
+<span>Maalesef sistemde hiç ilan bulunamadı. Hemen bir tane <a href="https://localhost:3000/addPost">ekleyebilirsin</a>.</span>
 {{/if}}
