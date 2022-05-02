@@ -1,6 +1,6 @@
 const md5 = require('md5')
 
-class HashHelper{
+class HashHelper {
     constructor() {}
     
     HashPassword(password) {
