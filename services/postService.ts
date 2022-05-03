@@ -4,6 +4,10 @@ import Post, {
 import {
     IAddPost
 } from '../models/ApiModel'
+import {
+    ObjectId
+} from 'mongoose'
+import { Result } from "postcss";
 
 export default class PostService {
     public async Get() {
@@ -19,6 +23,16 @@ export default class PostService {
                 price: model.price,
                 ownerUserId: model.ownerUserId
             });
+        } catch (error) {
+            console.log(error)
+        }
+    }
+    
+    public async Detail(postId: string): Promise<IPost | undefined>  {
+        try {
+            const result = await Post.findById(postId).lean()
+            if (result !== null) return result
+            return undefined
         } catch (error) {
             console.log(error)
         }

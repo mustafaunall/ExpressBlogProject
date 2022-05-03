@@ -52,4 +52,12 @@ router.post("/addPost", async (req: Request, res: Response) => {
     }
 });
 
+router.get('/postDetail/:postId', async (req: Request, res: Response) => {
+    const detailResult = await postService.Detail(req.params.postId)
+    res.render('postDetail', {
+        postId: req.params.postId,
+        post: detailResult
+    })
+})
+
 export default router;
