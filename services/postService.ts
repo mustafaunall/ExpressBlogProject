@@ -4,7 +4,7 @@ import Post, {
 
 export default class PostService {
     public async Get() {
-        const result: IPost[] = await Post.find();
+        const result: IPost[] = await Post.find().lean()
         return result;
     }
 

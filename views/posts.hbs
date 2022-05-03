@@ -1,11 +1,28 @@
 {{#if posts.length}}
-<div>
-    {{#each posts}}
-        <span>
-            <p>{{title}}</p>
-        </span>
-    {{/each}}
-</div>
+    <div class="row mt-3">
+        {{#each posts}}
+            <div class="col-6">
+                <div class="card">
+                    {{!-- <img class="card-img-top" src="..." alt="Card image cap"> --}}
+                    <div class="card-body">
+                        <h5 class="card-title">{{ title }}</h5>
+                        <p class="card-text">{{ description }}</p>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        {{#isHavePrice price}}
+                        <li class="list-group-item">Fiyat: {{ price }}</li>
+                        {{/isHavePrice}}
+                    </ul>
+                    <div class="card-body">
+                        <a href="/postDetail/{{_id}}" class="card-link">Detay</a>
+                    </div>
+                    <div class="card-footer text-muted">
+                        2 gün önce
+                    </div>
+                </div>
+            </div>
+        {{/each}}
+    </div>
 {{else}}
 <span>Maalesef sistemde hiç ilan bulunamadı. Hemen bir tane <a href="https://localhost:3000/addPost">ekleyebilirsin</a>.</span>
 {{/if}}

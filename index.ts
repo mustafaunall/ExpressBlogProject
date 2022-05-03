@@ -12,7 +12,12 @@ const app = express();
 
 const hbs = expressHBS.create({
     defaultLayout: 'main',
-    extname: 'hbs'
+    extname: 'hbs',
+    helpers: {
+        isHavePrice: function (price: Number, options: any) {
+            return price != 0 ? options.fn(this) : options.inverse(this)
+        }
+    }
 })
 
 app.engine('hbs', hbs.engine)

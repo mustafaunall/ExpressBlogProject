@@ -11,15 +11,12 @@ router.get("/", (req: Request, res: Response) => {
 
 router.get("/posts", async (req: Request, res: Response) => {
     const posts = await postService.Get();
-    console.log(posts);
-    console.log(posts);
     res.render("posts", {
         posts
     });
 });
 
 router.post("/addPost", async (req: Request, res: Response) => {
-    console.log(req.body);
     try {
         const {
             title,
