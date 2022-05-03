@@ -16,6 +16,10 @@ router.get("/posts", async (req: Request, res: Response) => {
     });
 });
 
+router.get('/addPost', async (req: Request, res: Response) => {
+    res.render('addPost', {})
+})
+
 router.post("/addPost", async (req: Request, res: Response) => {
     try {
         const {

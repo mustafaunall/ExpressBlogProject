@@ -1,0 +1,61 @@
+<div class="card-body">
+    <form>
+        <div class="row mb-3">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-1">
+                        <label for="postTitle">İlan Adı</label>
+                    </div>
+                    <div class="col-11">
+                        <input type="email" class="form-control" id="postTitle">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col">
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="col-2">
+                            <label class="sr-only" for="postPrice">Fiyat</label>
+                        </div>
+                        <div class="col-10">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">₺</span>
+                                </div>
+                                <input type="number" min="5" step="5" id="postPrice" class="form-control ml-2" placeholder="Ücret">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-2">
+                            <label for="postDesc">Açıklama</label>
+                        </div>
+                        <div class="col-10">
+                            <textarea class="form-control" id="postDesc" rows="3"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-10">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="promiseCheck">
+                    <label class="form-check-label" for="promiseCheck">
+                        <a href="~/rules">Kuralları</a> okuduğumu onaylıyorum.
+                    </label>
+                </div>
+            </div>
+            <div class="col-2">
+                <button id="submit_addPost" type="button" style="width: 100%;" class="btn btn-primary">İlan Ekle</button>
+            </div>
+        </div>
+    </form>
+</div>
+<script src="/js/addPost.js"></script>
