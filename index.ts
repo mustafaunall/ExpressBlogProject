@@ -14,8 +14,14 @@ const hbs = expressHBS.create({
     defaultLayout: 'main',
     extname: 'hbs',
     helpers: {
-        isHavePrice: function (price: Number, options: any) {
+        isHavePrice: function (price: number, options: any): any {
             return price != 0 ? options.fn(this) : options.inverse(this)
+        },
+        dateDiff: function (startDate: Date = new Date(Date.now()), endDate: Date): string {
+            console.log(endDate)
+            let diffTime: number = endDate.getTime() - startDate.getTime()
+            let diffDay: number = diffTime / (1000 * 3600 * 24)
+            return `${diffDay} gün önce`
         }
     }
 })

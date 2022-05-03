@@ -30,10 +30,10 @@ router.post("/addPost", async (req: Request, res: Response) => {
             title,
             description,
             price,
-            ownerUserId
+            createdUserId
         } = req.body;
         const model: IAddPost = {
-            title, description, price, ownerUserId: 1
+            title, description, price, createdUserId: 1
         }
         await postService.Add(model);
         res

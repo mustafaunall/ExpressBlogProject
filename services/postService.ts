@@ -21,7 +21,7 @@ export default class PostService {
                 title: model.title,
                 description: model.description,
                 price: model.price,
-                ownerUserId: model.ownerUserId
+                createdUserId: model.createdUserId
             });
         } catch (error) {
             console.log(error)

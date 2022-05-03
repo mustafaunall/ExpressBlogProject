@@ -4,6 +4,6 @@
     <h5 class="card-title">{{ post.title }}</h5>
     <p class="card-text">{{ post.price }} ₺</p>
     <p class="card-text">{{ post.description }}</p>
-    <p class="card-text"><small class="text-muted">Yayınlanma tarihi {{ post.price }}</small></p>
+    <p class="card-text"><small class="text-muted">Yayınlanma tarihi {{dateDiff post.createdDate }}</small></p>
   </div>
 </div>
