@@ -1,22 +1,23 @@
 import dotenv from "dotenv";
 dotenv.config();
+import path from 'path'
 const { PORT, MONGO_CONNECTION } = process.env;
 import express from "express";
-import { create } from "express-handlebars";
+const expressHBS = require('express-handlebars')
 import mongoose from "mongoose";
 
 import postRouter from "./routes/postRouter";
 
 const app = express();
 
-const hbs = create({
+const hbs = expressHBS.create({
     defaultLayout: 'main',
     extname: 'hbs'
 })
 
-app.engine("hbs", hbs.engine());
-app.set("view engine", "hbs");
-app.set("views", "views");
+app.engine('hbs', hbs.engine)
+app.set('view engine', 'hbs')
+app.set('views', path.join(__dirname, 'views'))
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
