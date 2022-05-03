@@ -8,7 +8,9 @@ $('#submit_addPost').on('click', function () {
     if (description === '') return alert('Lütfen ilan açıklamasını doldurun')
 
     $.post('http://localhost:3000/addPost', {
-        title, price, description, ownerUserId: 1
+        title: title,
+        price: price,
+        description: description,
     })
     .done(data => {
         console.log('success', data)

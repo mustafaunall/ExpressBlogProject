@@ -1,6 +1,9 @@
 import Post, {
     IPost
 } from "../models/Post";
+import {
+    IAddPost
+} from '../models/ApiModel'
 
 export default class PostService {
     public async Get() {
@@ -8,15 +11,16 @@ export default class PostService {
         return result;
     }
 
-    public async Add(
-        title: string, ownerUserId: string, description?: string, price?: number
-    ) {
+    public async Add(model: IAddPost) {
         try {
             await Post.create({
-                title, description, price, ownerUserId
+                title: model.title,
+                description: model.description,
+                price: model.price,
+                ownerUserId: model.ownerUserId
             });
         } catch (error) {
-            throw error;
+            console.log(error)
         }
     }
 }

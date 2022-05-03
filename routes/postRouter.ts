@@ -3,6 +3,10 @@ import PostService from "../services/postService";
 const postService = new PostService();
 const router = Router();
 
+import {
+    IAddPost
+} from '../models/ApiModel'
+
 router.get("/", (req: Request, res: Response) => {
     res.render("index", {
         title: "Ana Sayfa"
@@ -28,9 +32,10 @@ router.post("/addPost", async (req: Request, res: Response) => {
             price,
             ownerUserId
         } = req.body;
-        await postService.Add(
-            title, description, price, ownerUserId
-        );
+        const model: IAddPost = {
+            title, description, price, ownerUserId: 1
+        }
+        await postService.Add(model);
         res
         .json({
             isSuccess: true,
