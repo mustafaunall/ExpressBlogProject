@@ -14,6 +14,16 @@ $('#submit_addPost').on('click', function () {
     })
     .done(data => {
         console.log('success', data)
+        Swal.fire({
+            position: 'top-end',
+            icon: data.isSuccess ? 'success' : 'error',
+            title: data.message,
+            showConfirmButton: false,
+            timer: 1000
+          })
+          setTimeout(() => {
+            location.href = 'http://localhost:3000/posts'
+          }, 1000);
     })
     .fail(err => {
         console.log('error', err.responseJSON)

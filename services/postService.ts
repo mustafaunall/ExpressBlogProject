@@ -37,4 +37,24 @@ export default class PostService {
             console.log(error)
         }
     }
+
+    public async Update(postId: string, title: string, description: string, price: number): Promise<boolean> {
+        try {
+            const success = await Post.findByIdAndUpdate(postId, { title, description, price })
+            if (!success) return false
+            return true
+        } catch (error) {
+            return false
+        }
+    }
+
+    public async Delete(postId: string): Promise<boolean> {
+        try {
+            const success = await Post.findByIdAndDelete(postId)
+            if (!success) return false
+            return true
+        } catch (error) {
+            return false
+        }
+    }
 }

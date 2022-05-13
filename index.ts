@@ -10,6 +10,10 @@ import postRouter from "./routes/postRouter";
 
 const app = express();
 
+app.use(express.urlencoded({ extended: true }));
+app.use(express.static("public"));
+app.use(express.json());
+
 const hbs = expressHBS.create({
     defaultLayout: 'main',
     extname: 'hbs',
@@ -30,10 +34,6 @@ app.engine('hbs', hbs.engine)
 app.set('view engine', 'hbs')
 app.set('views', path.join(__dirname, 'views'))
 
-app.use(express.urlencoded({ extended: true }));
-app.use(express.static("public"));
-app.use(express.json());
-
 app.use(postRouter);
 
 const start = async () => {
@@ -41,7 +41,7 @@ const start = async () => {
         const MongoConnection: string = MONGO_CONNECTION ?? "";
         await mongoose.connect(MongoConnection);
 
-        app.listen(PORT, async () => {
+        app.listen(process.env.PORT || 3000, async () => {
             console.log(`Application started on http://localhost:${PORT}`);
         });
     } catch (error) {

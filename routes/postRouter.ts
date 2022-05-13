@@ -60,4 +60,79 @@ router.get('/postDetail/:postId', async (req: Request, res: Response) => {
     })
 })
 
+router.post('/postDetailUpdate', async (req: Request, res: Response) => {
+    const detail = await postService.Detail(req.body.id)
+    if (detail == null) {
+        return res
+            .status(444)
+            .json({
+                isSuccess: false,
+                message: "Veri yok"
+            })
+    }
+    return res
+        .status(200)
+        .json({
+            isSuccess: true,
+            message: "Veriler",
+            detail
+        })
+})
+
+router.put('/updatePost', async (req: Request, res: Response) => {
+    try {
+        const { id, title, description, price } = req.body
+        const result = await postService.Update(id, title, description, Number(price))
+        if (!result) {
+            return res
+            .status(444)
+            .json({
+                isSuccess: false,
+                message: "İlanınız güncenirken bir sorun oluştu"
+            })
+        }
+        return res
+            .status(200)
+            .json({
+                isSuccess: true,
+                message: 'İlanınız güncellendi'
+            })
+    } catch (error) {
+        return res
+        .status(444)
+        .json({
+            isSuccess: false,
+            message: "İlanınız güncenirken bir sorun oluştu"
+        })
+    }
+})
+
+router.delete('/deletePost', async (req: Request, res: Response) => {
+    try {
+        const { id } = req.body
+        const result = await postService.Delete(id)
+        if (!result) {
+            return res
+            .status(444)
+            .json({
+                isSuccess: false,
+                message: "İlanınız silinirken bir sorun oluştu"
+            })
+        }
+        return res
+            .status(200)
+            .json({
+                isSuccess: true,
+                message: 'İlanınız silindi'
+            })
+    } catch (error) {
+        return res
+        .status(444)
+        .json({
+            isSuccess: false,
+            message: "İlanınız silinirken bir sorun oluştu"
+        })
+    }
+})
+
 export default router;

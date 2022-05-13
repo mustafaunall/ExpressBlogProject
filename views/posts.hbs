@@ -1,28 +1,90 @@
 {{#if posts.length}}
-    <div class="row mt-3">
-        {{#each posts}}
-            <div class="col-6 mt-3">
-                <div class="card">
-                    {{!-- <img class="card-img-top" src="..." alt="Card image cap"> --}}
-                    <div class="card-body">
-                        <h5 class="card-title">{{ title }}</h5>
-                        <p class="card-text">{{ description }}</p>
-                    </div>
-                    <ul class="list-group list-group-flush">
-                        {{#isHavePrice price}}
-                        <li class="list-group-item">Fiyat: {{ price }}</li>
-                        {{/isHavePrice}}
-                    </ul>
-                    <div class="card-body">
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">İlan Güncelleme Ekranı</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+            <div class="col-4">
+                <label for="upt_title">İlan Başlığı :</label>
+            </div>
+            <div class="col-8">
+                <input class="w-100" type="text" id="upt_title">
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-4">
+                <label for="upt_description">İlan Açıklaması :</label>
+            </div>
+            <div class="col-8">
+                <input class="w-100" type="text" id="upt_description">
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-4">
+                <label for="upt_price">İlan Ücreti :</label>
+            </div>
+            <div class="col-8">
+                <input class="w-100" type="text" id="upt_price">
+            </div>
+        </div>
+        <input type="text" style="display: none;" id="upt_id">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
+        <button type="button" id="postUpdateButton" class="btn btn-primary">Kaydet</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row mt-3">
+    {{#each posts}}
+    <div class="col-6 mt-3">
+        <div class="card">
+            {{!-- <img class="card-img-top" src="..." alt="Card image cap"> --}}
+            <div class="card-body">
+                <h5 class="card-title">{{ title }}</h5>
+                <p class="card-text">{{ description }}</p>
+            </div>
+            <ul class="list-group list-group-flush">
+                {{#isHavePrice price}}
+                <li class="list-group-item">Fiyat: {{ price }}</li>
+                {{/isHavePrice}}
+            </ul>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-4">
                         <a href="/postDetail/{{_id}}" class="card-link">Detay</a>
                     </div>
-                    <div class="card-footer text-muted">
-                        2 gün önce
+                    <div class="col-4">
+                        <button class="btn btn-primary mr-2" onclick="updatePost('{{_id}}')" data-toggle="modal" data-target="#exampleModal">Güncelle</a>
+                    </div>
+                    <div class="col-4">
+                        <button class="btn btn-danger" onclick="deletePost('{{_id}}')">Sil</a>
                     </div>
                 </div>
             </div>
-        {{/each}}
+            {{!-- <div class="card-footer text-muted">
+                2 gün önce
+            </div> --}}
+        </div>
     </div>
+    {{/each}}
+</div>
 {{else}}
-<span>Maalesef sistemde hiç ilan bulunamadı. Hemen bir tane <a href="https://localhost:3000/addPost">ekleyebilirsin</a>.</span>
+<span>Maalesef sistemde hiç ilan bulunamadı. Hemen bir tane <a
+        href="http://localhost:3000/addPost">ekleyebilirsin</a>.</span>
 {{/if}}
+
+<script src="/js/updatePost.js"></script>
+<script src="/js/deletePost.js"></script>
