@@ -9,6 +9,7 @@
     "start": "node .",
     "build": "tsc -p .",
     "dev": "nodemon index.ts",
+    "deploy": "git add . && git commit -m Heroku && git push heroku main",
     "tailwind:css": "postcss public/styles/tailwind.css -o public/styles/style.css",
     "tailwind:dev": "npx tailwindcss -i ./public/styles/tailwind.css -o ./public/styles/style.css --watch"
   },

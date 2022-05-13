@@ -13,7 +13,7 @@ export interface IPost {
 const PostSchema =  new Schema<IPost>({
     title: { type: String, required: true },
     description: { type: String, required: true },
-    price: { type: Number, required: false, default: 0 },
+    price: { type: number, required: false, default: 0 },
     isSelled: { type: Boolean, required: false, default: false },
     isActive: { type: Boolean, required: false, default: true },
     createdUserId: { type: String, required: true },
