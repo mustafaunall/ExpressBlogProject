@@ -1,6 +1,6 @@
 function updatePost (id) {
     $.ajax({
-        url: `http://localhost:3000/postDetailUpdate`,
+        url: `https://express-blog-project.herokuapp.com/postDetailUpdate`,
         dataType: 'json',
         type: 'post',
         contentType: 'application/json',
@@ -22,7 +22,7 @@ function updatePost (id) {
 
 $('#postUpdateButton').on('click', function() {
     $.ajax({
-        url: `http://localhost:3000/updatePost`,
+        url: `https://express-blog-project.herokuapp.com/updatePost`,
         dataType: 'json',
         type: 'put',
         contentType: 'application/json',

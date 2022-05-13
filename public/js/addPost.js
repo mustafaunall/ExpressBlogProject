@@ -7,7 +7,7 @@ $('#submit_addPost').on('click', function () {
     let description = $('#postDesc').val()
     if (description === '') return alert('Lütfen ilan açıklamasını doldurun')
 
-    $.post('http://localhost:3000/addPost', {
+    $.post('https://express-blog-project.herokuapp.com/addPost', {
         title: title,
         price: price,
         description: description,
@@ -22,7 +22,7 @@ $('#submit_addPost').on('click', function () {
             timer: 1000
           })
           setTimeout(() => {
-            location.href = 'http://localhost:3000/posts'
+            location.href = 'https://express-blog-project.herokuapp.com/posts'
           }, 1000);
     })
     .fail(err => {

@@ -1,6 +1,6 @@
 function deletePost (id) {
     $.ajax({
-        url: `http://localhost:3000/deletePost`,
+        url: `https://express-blog-project.herokuapp.com/deletePost`,
         dataType: 'json',
         type: 'delete',
         contentType: 'application/json',
